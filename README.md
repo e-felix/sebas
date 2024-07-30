@@ -10,10 +10,6 @@ I mainly work on projects which are based of framework with dotenv and cli comma
 
 This tool is not intended for **PRODUCTION** usage.
 
-## Target Architecture
-
-<img src="docs/target_arch.png" alt="Target architecture" width="300" height="300" title="Target Architecture">
-
 ## Features
 
 ### Mod Context
@@ -26,8 +22,9 @@ in order to target the correct project and the correct env
 ### Mod Environment Variable Manager
 
 1. Create, Read, Update, Delete environment variables from a `.env` file
-    - [ ] Create a variable
+    - [ ] Read `.env` file
     - [ ] Read a variable
+    - [ ] Create a variable
     - [ ] Update a variable
     - [ ] Delete a variable
 
@@ -43,7 +40,7 @@ in order to target the correct project and the correct env
 - [ ] Run a command
 - [ ] Save a command for reuse
 - [ ] Save a collection of command per project and environment
-- 
+
 ### Mod Container Registry
 
 - [ ] Connect to a registry
