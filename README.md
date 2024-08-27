@@ -47,3 +47,34 @@ in order to target the correct project and the correct env
 - [ ] List packages
 - [ ] Push a package
 - [ ] Delete a package
+
+## Development
+### Install
+
+```sh
+make
+```
+
+or 
+
+```sh
+make install
+```
+
+### Run tests
+
+```sh
+make test
+```
+
+### Build cli binary
+
+```sh
+make build
+```
+
+### Remove the build
+
+```sh
+make clean
+```

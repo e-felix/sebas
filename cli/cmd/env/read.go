@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"fmt"
-
+	"github.com/e-felix/sebas/internal/env"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 // readCmd represents the read command
@@ -11,7 +12,16 @@ var readCmd = &cobra.Command{
 	Use:   "read",
 	Short: "Read and print the environment variable defined in a `.env` file",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(args)
+		envs, err := env.ReadFile(args[0])
+
+		if err != nil {
+			fmt.Println(fmt.Errorf(err.Error()))
+			os.Exit(1)
+		}
+
+		for _, env := range envs {
+			fmt.Printf("%v=%v\n", env.Key, env.Value)
+		}
 	},
 }
 

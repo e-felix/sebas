@@ -9,8 +9,8 @@ import (
 )
 
 type Env struct {
-	key   string
-	value string
+	Key   string
+	Value string
 }
 
 func ReadFile(path string) ([]Env, error) {
@@ -26,7 +26,7 @@ func ReadFile(path string) ([]Env, error) {
 		log.Panicln(err)
 	}
 
-	envs := make([]Env, len(tokens))
+	envs := make([]Env, 0)
 	for k, v := range tokens {
 		envs = append(envs, *ConvertToEnv(k, v))
 	}
@@ -82,5 +82,5 @@ func GetTokens(envs string) (map[string]string, error) {
 }
 
 func ConvertToEnv(key string, value string) *Env {
-	return &Env{key: key, value: value}
+	return &Env{Key: key, Value: value}
 }
