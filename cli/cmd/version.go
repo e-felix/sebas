@@ -2,16 +2,17 @@ package cmd
 
 import (
 	"fmt"
-
 	"github.com/spf13/cobra"
 )
+
+var version = "v0.1.0"
 
 // envCmd represents the env command
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version number of Sebas",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("v0.1")
+		fmt.Println(version)
 	},
 }
 

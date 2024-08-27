@@ -7,9 +7,9 @@ import (
 	"os"
 )
 
-var readCmd = &cobra.Command{
-	Use:   "read [FILEPATH]",
-	Short: "Read and print the environment variables defined in a `.env` file",
+var saveCmd = &cobra.Command{
+	Use:   "save [FILEPATH] [PROJECT]",
+	Short: "Save the environment variables defined in a `.env` file for a project",
 	Run: func(cmd *cobra.Command, args []string) {
 		envs, err := env.ReadFile(args[0])
 
@@ -25,7 +25,7 @@ var readCmd = &cobra.Command{
 }
 
 func init() {
-	EnvCmd.AddCommand(readCmd)
+	EnvCmd.AddCommand(saveCmd)
 
 	// Here you will define your flags and configuration settings.
 

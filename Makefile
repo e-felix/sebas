@@ -3,18 +3,17 @@ ENTRY_FILE=main.go
 DEST_DIR=build
 BIN=sebas
 
-.PHONY: clean
+.PHONY: install build test clean
 
-all:
-	go mod tidy
+all: install
 
 install:
-	go mod tidy
+	go get -v ./...
 
 build: $(SOURCE_DIR)/$(ENTRY_FILE)
 	go build -o $(DEST_DIR)/$(BIN) -v $(SOURCE_DIR)/$(ENTRY_FILE)
 
-test:
+test: install
 	go test -v ./...
 
 clean:
