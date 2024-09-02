@@ -78,3 +78,11 @@ make build
 ```sh
 make clean
 ```
+
+### Generate a new cli with cobra-cli
+
+```sh
+go install github.com/spf13/cobra-cli@latest
+cd cli/
+$GOPATH/bin/cobra-cli add [COMMAND] # if not set, look for default path: https://go.dev/wiki/GOPATH
+```

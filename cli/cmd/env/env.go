@@ -2,7 +2,6 @@ package cmd
 
 import "github.com/spf13/cobra"
 
-// envCmd represents the env command
 var EnvCmd = &cobra.Command{
 	Use:   "env",
 	Short: "Manage environment variables coming from `.env` files",
