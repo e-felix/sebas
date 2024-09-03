@@ -47,3 +47,42 @@ in order to target the correct project and the correct env
 - [ ] List packages
 - [ ] Push a package
 - [ ] Delete a package
+
+## Development
+### Install
+
+```sh
+make
+```
+
+or 
+
+```sh
+make install
+```
+
+### Run tests
+
+```sh
+make test
+```
+
+### Build cli binary
+
+```sh
+make build
+```
+
+### Remove the build
+
+```sh
+make clean
+```
+
+### Generate a new cli with cobra-cli
+
+```sh
+go install github.com/spf13/cobra-cli@latest
+cd cli/
+$GOPATH/bin/cobra-cli add [COMMAND] # if not set, look for default path: https://go.dev/wiki/GOPATH
+```

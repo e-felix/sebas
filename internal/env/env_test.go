@@ -15,8 +15,8 @@ var (
 )
 
 func TestReadFile(t *testing.T) {
-	expected := make([]Env, 1)
-	expected = append(expected, Env{key: "FOO", value: "BAR"})
+	expected := make([]Env, 0)
+	expected = append(expected, Env{Key: "FOO", Value: "BAR"})
 	expectedLength := len(expected)
 
 	envs, _ := ReadFile(envFilePath)
@@ -51,7 +51,7 @@ func TestGetTokens(t *testing.T) {
 func TestConvertToEnv(t *testing.T) {
 	key := "FOO"
 	value := "BAR"
-	expected := &Env{key: key, value: value}
+	expected := &Env{Key: key, Value: value}
 
 	env := ConvertToEnv(key, value)
 
