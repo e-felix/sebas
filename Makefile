@@ -2,8 +2,9 @@ CC=gcc
 CFLAGS=-std=c99 -pedantic -Wall
 BIN=sebas
 DEST=bin/
-SRC=sebas.c src/project.c lib/database.c
-LIBS=-lsqlite3
+SRC=sebas.c src/project.c src/database.c
+LIBS=lib/database/sqlite.c
+CLIBS=-lsqlite3
 
 .PHONY: clean build run dir
 
@@ -12,11 +13,11 @@ all: run
 dir:
 	mkdir -p $(DEST)
 
-build: dir $(SRC)
-	$(CC) $(SRC) $(CFLAGS) $(LIBS) -o $(DEST)$(BIN)
+build: dir $(SRC) $(LIBS)
+	$(CC) $(SRC) $(LIBS) $(CFLAGS) $(CLIBS) -o $(DEST)$(BIN)
 
 run: build
 	./$(DEST)$(BIN)
 
 clean:
-	rm sebas sqlite3.db
+	rm -rf $(DEST)

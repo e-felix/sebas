@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lib/database.h"
+#include "src/database.h"
 
 int main(void) {
   Project *gb = create_project(
@@ -17,6 +17,13 @@ int main(void) {
   printf("Project path '%s'\n", gb->absolute_path);
 
   delete_project(gb);
+
+  enum DATABASE_DBMS dbms = SQLITE;
+  Database *db = database_get(dbms, NULL);
+  printf("dsn = %s\n", db->dsn);
+  printf("DB exists: %s\n", db->instance != NULL ? "O" : "X");
+  database_init(db);
+  database_close(db);
 
   return EXIT_SUCCESS;
 }
