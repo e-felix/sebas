@@ -5,6 +5,7 @@
 #include <string.h>
 
 static int query_result_callback(void *NotUsed, int argc, char **argv, char **azColName) {
+  printf("Callback called\n");
   for (int i = 0; i < argc; i++) {
     printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : NULL);
   }
@@ -25,13 +26,18 @@ Database *database_get(enum DATABASE_DBMS dbms, char* dsn) {
 
     switch (database->dbms) {
         case DBMS_SQLITE: {
-            database->instance = s_sqlite_get_instance(dsn);
+            database->instance = s_sqlite_get_instance(database->dsn);
             break;
         }
         default: {
             printf("Database SGB is not supported.\n");
             exit(EXIT_FAILURE);
         }
+    }
+
+    if (database->instance == NULL) {
+      printf("Database could not be created\n");
+      exit(EXIT_FAILURE);
     }
 
     return database;
@@ -48,8 +54,7 @@ int database_init(Database *db) {
                 "CREATE TABLE IF NOT EXISTS col_test (id INT PRIMARY KEY, name "
                 "VARCHAR(255))", query_result_callback);
 
-  {
-    int i = 100;
+    int i = 0;
     char *sql = "INSERT INTO col_test VALUES (%d, 'test %d')";
     char *query = malloc(strlen(sql) + sizeof(i) * 2);
 
@@ -59,7 +64,6 @@ int database_init(Database *db) {
       i++;
     }
     free(query);
-  }
 
   s_sqlite_run_query(sqlite_db, "SELECT * FROM col_test", query_result_callback);
 

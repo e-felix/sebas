@@ -1,16 +1,17 @@
-#include "src/project.h"
+#include "sebas.h"
+#include "database.h"
+#include "project.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "src/database.h"
 
-int main(void) {
+void sebas_run(void) {
   Project *gb = create_project(
       "Gambettesbox", "$HOME/Projets/mylittle/sylius/gambettesbox-sylius");
 
   if (gb == NULL) {
     printf("Error creating gb");
-    return EXIT_FAILURE;
+    exit(EXIT_FAILURE);
   }
 
   printf("Project name '%s'\n", gb->name);
@@ -21,18 +22,9 @@ int main(void) {
   enum DATABASE_DBMS dbms = SQLITE;
   Database *db = database_get(dbms, NULL);
   printf("dsn = %s\n", db->dsn);
-  printf("DB exists: %s\n", db->instance != NULL ? "O" : "X");
+  printf("DB exists: %s\n", db->instance != NULL ? "Yes" : "No");
   database_init(db);
+  printf("DB initiated\n");
   database_close(db);
-
-  return EXIT_SUCCESS;
-}
-
-static int query_result_callback(void *NotUsed, int argc, char **argv, char **azColName) {
-  for (int i = 0; i < argc; i++) {
-    printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : NULL);
-  }
-  printf("\n");
-
-  return 0;
+  printf("DB closed\n");
 }

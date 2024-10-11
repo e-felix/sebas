@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-std=c99 -pedantic -Wall
 BIN=sebas
-DEST=bin/
-SRC=sebas.c src/project.c src/database.c
+DEST_FOLDER=bin
+SRC=main.c src/sebas.c src/project.c src/database.c
 LIBS=lib/database/sqlite.c
 CLIBS=-lsqlite3
 
@@ -11,13 +11,17 @@ CLIBS=-lsqlite3
 all: run
 
 dir:
-	mkdir -p $(DEST)
+	mkdir -p $(DEST_FOLDER)
 
 build: dir $(SRC) $(LIBS)
-	$(CC) $(SRC) $(LIBS) $(CFLAGS) $(CLIBS) -o $(DEST)$(BIN)
+	$(CC) $(SRC) $(LIBS) $(CFLAGS) $(CLIBS) -o $(DEST_FOLDER)/$(BIN)
 
 run: build
-	./$(DEST)$(BIN)
+	./$(DEST_FOLDER)$(BIN)
 
 clean:
-	rm -rf $(DEST)
+	rm -rf $(DEST_FOLDER)
+
+
+test: build tests/tests.c tests/project_test.c
+	$(CC) tests/tests.c tests/project_test.c $(SRC) $(LIBS) $(CFLAGS) $(CLIBS)
