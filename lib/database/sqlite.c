@@ -1,7 +1,7 @@
 #include "sqlite.h"
 #include <stdio.h>
 
-sqlite3 *db;
+sqlite3 *db = NULL;
 
 sqlite3* s_sqlite_get_instance(char *dsn) {
     int rc;
@@ -20,10 +20,12 @@ void s_sqlite_close_instance(sqlite3 *db) {
 }
 
 int s_sqlite_run_query(sqlite3 *db, char *query, int (*callback)(void*, int, char**, char**)) {
+    printf("Running query: \"%s\"\n", query);
     int rc;
     char *errorMsg;
     rc = sqlite3_exec(db, query, callback, 0, &errorMsg);
     if (rc != SQLITE_OK) {
+      printf("Something went wrong!\n");
       fprintf(stderr, "%s\n", sqlite3_errmsg(db));
       sqlite3_close(db);
       sqlite3_free(errorMsg);

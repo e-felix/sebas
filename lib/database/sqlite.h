@@ -1,7 +1,7 @@
 #ifndef SEBAS_SQLITE_H
 #define SEBAS_SQLITE_H
 
-#define SEBAS_SQLITE_DB_PATH "/tmp/sebas/sqlite3.db"
+#define SEBAS_SQLITE_DB_PATH "./bin/sqlite3.db"
 #include <sqlite3.h>
 
 sqlite3 *s_sqlite_get_instance(char *dsn);
