@@ -22,6 +22,5 @@ run: build
 clean:
 	rm -rf $(DEST_FOLDER)
 
-
-test: build tests/tests.c tests/project_test.c
-	$(CC) tests/tests.c tests/project_test.c $(SRC) $(LIBS) $(CFLAGS) $(CLIBS)
+test: 
+	$(CC) tests/tests.c tests/project_test.c src/project.c $(CFLAGS) -o tests

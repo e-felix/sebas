@@ -7,11 +7,7 @@ enum DATABASE_DBMS {
     SQLITE = DBMS_SQLITE,
 };
 
-typedef struct Database {
-    enum DATABASE_DBMS dbms;
-    char *dsn;
-    void *instance;
-} Database;
+typedef struct _database Database;
 
 Database *database_get(enum DATABASE_DBMS type, char *dsn);
 
