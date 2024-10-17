@@ -4,6 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct _database {
+    enum DATABASE_DBMS dbms;
+    char *dsn;
+    void *instance;
+} Database;
+
 static int query_result_callback(void *NotUsed, int argc, char **argv, char **azColName) {
   printf("Callback called\n");
   for (int i = 0; i < argc; i++) {

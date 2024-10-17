@@ -1,10 +1,9 @@
 #ifndef SEBAS_PROJECT_H
 #define SEBAS_PROJECT_H
 
-typedef struct Project {
-    int id;
-    char *name;
-    char *absolute_path;
+typedef struct _project {
+  char *name;
+  char *absolute_path;
 } Project;
 
 Project *create_project(char *name, char *absolute_path);
