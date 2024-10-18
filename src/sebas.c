@@ -1,15 +1,10 @@
 #include "sebas.h"
-#include "database.h"
-#include "project.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void launch_app();
-
 void sebas_run(void) {
-  Project *gb = create_project(
-      "Gambettesbox", "$HOME/Projets/mylittle/sylius/gambettesbox-sylius");
+  Project *gb = create_project("Gambettesbox", "my path");
 
   if (gb == NULL) {
     printf("Error creating gb");
@@ -28,5 +23,3 @@ void sebas_run(void) {
   database_close(db);
   printf("DB closed\n");
 }
-
-void launch_app() {}

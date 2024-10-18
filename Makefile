@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-std=c99 -pedantic -Wall
 BIN=sebas
 DEST_FOLDER=bin
-SRC=main.c src/sebas.c src/project.c src/database.c
+SRC=main.c src/sebas.c src/domain/project.c src/service/database.c
 LIBS=lib/database/sqlite.c
 CLIBS=-lsqlite3
 
@@ -17,10 +17,7 @@ build: dir $(SRC) $(LIBS)
 	$(CC) $(SRC) $(LIBS) $(CFLAGS) $(CLIBS) -o $(DEST_FOLDER)/$(BIN)
 
 run: build
-	./$(DEST_FOLDER)$(BIN)
+	./$(DEST_FOLDER)/$(BIN)
 
 clean:
 	rm -rf $(DEST_FOLDER)
-
-test: 
-	$(CC) tests/tests.c tests/project_test.c src/project.c $(CFLAGS) -o tests
