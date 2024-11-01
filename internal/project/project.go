@@ -58,6 +58,28 @@ func (p *Project) AddEnv(newEnv Env) bool {
 	return false
 }
 
+func (p *Project) RemoveEnv(envToRemove Env) bool {
+	newEnvList := make([]Env, 0)
+
+	exists := false
+	for _, env := range p.Envs {
+		if reflect.DeepEqual(env, envToRemove) {
+			exists = true
+			continue
+		}
+
+		newEnvList = append(newEnvList, env)
+	}
+
+	if !exists {
+		return false
+	}
+
+	p.Envs = newEnvList
+
+	return true
+}
+
 func (p *Project) AddCmd(newCmd Command) bool {
 	p.Cmds = append(p.Cmds, newCmd)
 
