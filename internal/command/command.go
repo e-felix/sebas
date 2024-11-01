@@ -15,3 +15,7 @@ func NewCommand(cmd string, args []string) *Command {
 func (command *Command) UpdateCmd(cmd string) {
 	command.Cmd = cmd
 }
+
+func (command *Command) UpdateArgs(args []string) {
+	command.Args = args
+}
