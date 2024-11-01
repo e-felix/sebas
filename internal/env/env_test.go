@@ -1,11 +1,12 @@
 package env
 
 import (
-	"github.com/e-felix/sebas/internal/util"
 	"path/filepath"
 	"reflect"
 	"runtime"
 	"testing"
+
+	"github.com/e-felix/sebas/internal/util"
 )
 
 var (
