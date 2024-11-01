@@ -14,7 +14,7 @@ This tool is not intended for **PRODUCTION** usage.
 
 ### Mod Context
 
-> TDC: is it something we need ?
+> TBC: is it something we need ?
 
 Context would be a top level abstraction which could be used by other mod \
 in order to target the correct project and the correct env
@@ -65,24 +65,4 @@ make install
 
 ```sh
 make test
-```
-
-### Build cli binary
-
-```sh
-make build
-```
-
-### Remove the build
-
-```sh
-make clean
-```
-
-### Generate a new cli with cobra-cli
-
-```sh
-go install github.com/spf13/cobra-cli@latest
-cd cli/
-$GOPATH/bin/cobra-cli add [COMMAND] # if not set, look for default path: https://go.dev/wiki/GOPATH
 ```
