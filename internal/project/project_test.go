@@ -1,13 +1,15 @@
 package project
 
 import (
-	. "github.com/e-felix/sebas/internal/env"
 	"reflect"
 	"testing"
+
+	. "github.com/e-felix/sebas/internal/command"
+	. "github.com/e-felix/sebas/internal/env"
 )
 
 func TestNewProject(t *testing.T) {
-	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0)}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
 
 	newProject := NewProject("MyProject")
 
@@ -33,10 +35,6 @@ func TestAddEnv(t *testing.T) {
 	newProject.AddEnv(env)
 
 	assertEqual(expected, newProject, t)
-}
-
-func TestPrint(t *testing.T) {
-	// TODO: implement TestPrint
 }
 
 func assertEqual(expected *Project, actual *Project, t *testing.T) {
