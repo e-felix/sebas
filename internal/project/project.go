@@ -56,3 +56,9 @@ func (p *Project) AddEnv(newEnv Env) bool {
 
 	return false
 }
+
+func (p *Project) AddCmd(newCmd Command) bool {
+	p.Cmds = append(p.Cmds, newCmd)
+
+	return true
+}

@@ -27,9 +27,9 @@ func TestUpdateProject(t *testing.T) {
 }
 
 func TestAddEnv(t *testing.T) {
-	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
-
 	env := Env{Key: "FOO", Value: "BAR"}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: []Env{env}, Cmds: make([]Command, 0)}
+
 	newProject := NewProject("MyProject")
 	newProject.AddEnv(env)
 
