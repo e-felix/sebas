@@ -36,6 +36,17 @@ func TestAddEnv(t *testing.T) {
 	Assert.DeepEqual(project, expected)
 }
 
+func TestRemoveEnv(t *testing.T) {
+	env := Env{Key: "FOO", Value: "BAR"}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
+
+	project := NewProject("MyProject")
+	project.AddEnv(env)
+	project.RemoveEnv(env)
+
+	Assert.DeepEqual(project, expected)
+}
+
 func TestAddCommand(t *testing.T) {
 	cmd := Command{Cmd: "echo", Args: []string{"Hello", "World"}}
 	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: []Command{cmd}}
