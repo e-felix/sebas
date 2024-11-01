@@ -5,12 +5,13 @@ import (
 	"testing"
 )
 
-func TestCreateCommandWithEmptyArgs(t *testing.T) {
-	cmd := "ls"
+func TestNewCommand(t *testing.T) {
+	cmd := "echo"
 	args := make([]string, 0)
+	args = append(args, "Hello")
 	expected := &Command{Cmd: cmd, Args: args}
 
-	command := CreateCommand(cmd, args)
+	command := NewCommand(cmd, args)
 
 	if !reflect.DeepEqual(command, expected) {
 		t.Fatalf("Found %v, expected %v", command, expected)

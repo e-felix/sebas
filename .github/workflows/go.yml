@@ -16,13 +16,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
-          cache-dependency-path:
+          check-latest: true
+          cache-dependency-path: ./go.sum
 
       - name: Launch tests
         run: make test
-
-      - name: Build
-        run: make build
-
-      - name: Show Sebas version
-        run: build/sebas version
