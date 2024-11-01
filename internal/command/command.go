@@ -11,3 +11,7 @@ func NewCommand(cmd string, args []string) *Command {
 		Args: args,
 	}
 }
+
+func (command *Command) UpdateCmd(cmd string) {
+	command.Cmd = cmd
+}
