@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/e-felix/sebas/internal/util"
+	Assert "github.com/e-felix/sebas/internal/util/assert"
 )
 
 var (
@@ -23,13 +24,9 @@ func TestReadFile(t *testing.T) {
 	envs, _ := ReadFile(envFilePath)
 	length := len(envs)
 
-	if length != expectedLength {
-		t.Fatalf("envs length = %d, expected %d", length, expectedLength)
-	}
+	Assert.Equal(length, expectedLength)
 
-	if !reflect.DeepEqual(envs, expected) {
-		t.Fatalf("Found %v, expected %v", envs, expected)
-	}
+	Assert.DeepEqual(envs, expected)
 }
 
 func TestGetTokens(t *testing.T) {
@@ -44,6 +41,7 @@ func TestGetTokens(t *testing.T) {
 
 	tokens, _ := GetTokens(content)
 
+	Assert.DeepEqual(tokens, expected)
 	if !reflect.DeepEqual(tokens, expected) {
 		t.Fatalf("Found %v, expected %v", tokens, expected)
 	}
@@ -56,6 +54,7 @@ func TestConvertToEnv(t *testing.T) {
 
 	env := ConvertToEnv(key, value)
 
+	Assert.DeepEqual(env, expected)
 	if !reflect.DeepEqual(env, expected) {
 		t.Fatalf("Found %v, expected %v", env, expected)
 	}

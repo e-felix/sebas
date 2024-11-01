@@ -1,23 +1,19 @@
 package project
 
 import (
-	"reflect"
 	"testing"
 
 	. "github.com/e-felix/sebas/internal/command"
 	. "github.com/e-felix/sebas/internal/env"
+	Assert "github.com/e-felix/sebas/internal/util/assert"
 )
-
-var t *testing.T
 
 func TestNewProject(t *testing.T) {
 	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
 
 	project := NewProject("MyProject")
 
-	if !reflect.DeepEqual(project, expected) {
-		t.Fatalf("Found %v, expected %v", project, expected)
-	}
+	Assert.DeepEqual(project, expected)
 }
 
 func TestUpdateProject(t *testing.T) {
@@ -27,9 +23,7 @@ func TestUpdateProject(t *testing.T) {
 	project := NewProject("MyProject")
 	project.Update(newName)
 
-	if !reflect.DeepEqual(project, expected) {
-		t.Fatalf("Found %v, expected %v", project, expected)
-	}
+	Assert.DeepEqual(project, expected)
 }
 
 func TestAddEnv(t *testing.T) {
@@ -39,9 +33,7 @@ func TestAddEnv(t *testing.T) {
 	project := NewProject("MyProject")
 	project.AddEnv(env)
 
-	if !reflect.DeepEqual(project, expected) {
-		t.Fatalf("Found %v, expected %v", project, expected)
-	}
+	Assert.DeepEqual(project, expected)
 }
 
 func TestAddCommand(t *testing.T) {
@@ -51,20 +43,16 @@ func TestAddCommand(t *testing.T) {
 	project := NewProject("MyProject")
 	project.AddCmd(cmd)
 
-	if !reflect.DeepEqual(project, expected) {
-		t.Fatalf("Found %v, expected %v", project, expected)
-	}
+	Assert.DeepEqual(project, expected)
 }
 
 func TestRemoveCommand(t *testing.T) {
 	cmd := Command{Cmd: "echo", Args: []string{"Hello", "World"}}
-	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: []Command{cmd}}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
 
 	project := NewProject("MyProject")
 	project.AddCmd(cmd)
 	project.RemoveCmd(cmd)
 
-	if !reflect.DeepEqual(project, expected) {
-		t.Fatalf("Found %v, expected %v", project, expected)
-	}
+	Assert.DeepEqual(project, expected)
 }

@@ -1,8 +1,9 @@
 package command
 
 import (
-	"reflect"
 	"testing"
+
+	Assert "github.com/e-felix/sebas/internal/util/assert"
 )
 
 func TestNewCommand(t *testing.T) {
@@ -13,9 +14,7 @@ func TestNewCommand(t *testing.T) {
 
 	command := NewCommand(cmd, args)
 
-	if !reflect.DeepEqual(command, expected) {
-		t.Fatalf("Found %v, expected %v", command, expected)
-	}
+	Assert.DeepEqual(command, expected)
 }
 
 func TestCommandUpdateCmd(t *testing.T) {
@@ -29,9 +28,7 @@ func TestCommandUpdateCmd(t *testing.T) {
 	command := &Command{Cmd: cmd, Args: args}
 	command.UpdateCmd(newCmd)
 
-	if !reflect.DeepEqual(command, expected) {
-		t.Fatalf("Found %v, expected %v", command, expected)
-	}
+	Assert.DeepEqual(command, expected)
 }
 
 func TestCommandUpdateArgs(t *testing.T) {
@@ -46,7 +43,5 @@ func TestCommandUpdateArgs(t *testing.T) {
 	command := &Command{Cmd: cmd, Args: args}
 	command.UpdateArgs(newArgs)
 
-	if !reflect.DeepEqual(command, expected) {
-		t.Fatalf("Found %v, expected %v", command, expected)
-	}
+	Assert.DeepEqual(command, expected)
 }

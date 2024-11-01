@@ -2,6 +2,7 @@ package project
 
 import (
 	"fmt"
+	"reflect"
 
 	. "github.com/e-felix/sebas/internal/command"
 	. "github.com/e-felix/sebas/internal/env"
@@ -59,6 +60,28 @@ func (p *Project) AddEnv(newEnv Env) bool {
 
 func (p *Project) AddCmd(newCmd Command) bool {
 	p.Cmds = append(p.Cmds, newCmd)
+
+	return true
+}
+
+func (p *Project) RemoveCmd(cmdToRemove Command) bool {
+	newCmdList := make([]Command, 0)
+
+	exists := false
+	for _, cmd := range p.Cmds {
+		if reflect.DeepEqual(cmd, cmdToRemove) {
+			exists = true
+			continue
+		}
+
+		newCmdList = append(newCmdList, cmd)
+	}
+
+	if !exists {
+		return false
+	}
+
+	p.Cmds = newCmdList
 
 	return true
 }
