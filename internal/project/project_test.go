@@ -27,12 +27,21 @@ func TestUpdateProject(t *testing.T) {
 }
 
 func TestAddEnv(t *testing.T) {
-	env := Env{Key: "FOO", Value: "BAR"}
-	envs := []Env{env}
-	expected := &Project{Id: 1, Name: "MyProject", Envs: envs, Cmds: make([]Command, 0)}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: make([]Command, 0)}
 
+	env := Env{Key: "FOO", Value: "BAR"}
 	newProject := NewProject("MyProject")
 	newProject.AddEnv(env)
+
+	assertEqual(expected, newProject, t)
+}
+
+func TestAddCommand(t *testing.T) {
+	cmd := Command{Cmd: "echo", Args: []string{"Hello", "World"}}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: make([]Env, 0), Cmds: []Command{cmd}}
+
+	newProject := NewProject("MyProject")
+	newProject.AddCmd(cmd)
 
 	assertEqual(expected, newProject, t)
 }
