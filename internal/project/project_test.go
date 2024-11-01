@@ -18,7 +18,7 @@ func TestNewProject(t *testing.T) {
 
 func TestUpdateProject(t *testing.T) {
 	newName := "MyNewName"
-	expected := &Project{Id: 1, Name: newName, Envs: make([]Env, 0)}
+	expected := &Project{Id: 1, Name: newName, Envs: make([]Env, 0), Cmds: make([]Command, 0)}
 
 	newProject := NewProject("MyProject")
 	newProject.Update(newName)
@@ -29,7 +29,7 @@ func TestUpdateProject(t *testing.T) {
 func TestAddEnv(t *testing.T) {
 	env := Env{Key: "FOO", Value: "BAR"}
 	envs := []Env{env}
-	expected := &Project{Id: 1, Name: "MyProject", Envs: envs}
+	expected := &Project{Id: 1, Name: "MyProject", Envs: envs, Cmds: make([]Command, 0)}
 
 	newProject := NewProject("MyProject")
 	newProject.AddEnv(env)

@@ -2,6 +2,8 @@ package project
 
 import (
 	"fmt"
+
+	. "github.com/e-felix/sebas/internal/command"
 	. "github.com/e-felix/sebas/internal/env"
 )
 
@@ -9,6 +11,7 @@ type Project struct {
 	Id   int
 	Name string
 	Envs []Env
+	Cmds []Command
 }
 
 func NewProject(name string) *Project {
@@ -16,6 +19,7 @@ func NewProject(name string) *Project {
 		Id:   1,
 		Name: name,
 		Envs: make([]Env, 0),
+		Cmds: make([]Command, 0),
 	}
 }
 
