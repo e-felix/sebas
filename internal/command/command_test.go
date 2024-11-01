@@ -33,3 +33,20 @@ func TestCommandUpdateCmd(t *testing.T) {
 		t.Fatalf("Found %v, expected %v", command, expected)
 	}
 }
+
+func TestCommandUpdateArgs(t *testing.T) {
+	cmd := "echo"
+	args := make([]string, 0)
+	args = append(args, "Hello")
+
+	newArgs := make([]string, 0)
+	newArgs = append(newArgs, "Hi")
+	expected := &Command{Cmd: cmd, Args: newArgs}
+
+	command := &Command{Cmd: cmd, Args: args}
+	command.UpdateArgs(newArgs)
+
+	if !reflect.DeepEqual(command, expected) {
+		t.Fatalf("Found %v, expected %v", command, expected)
+	}
+}
