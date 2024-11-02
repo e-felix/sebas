@@ -49,13 +49,22 @@ in order to target the correct project and the correct env
 - [ ] Delete a package
 
 ## Development
-### Install
+### Prerequisites
+
+Install Go (minimum version 1.21.4)
+
+For the GUI, we use the module [fyne.io](https://github.com/fyne-io/fyne). \
+Ensure to check this module's prerequisites to run the application
+
+### Run the application
 
 ```sh
 make
 ```
+> [!NOTE]
+> The first compilation of Fyne on Windows can take up to 10 minutes, depending on your hardware. Subsequent builds will be fast.
 
-or 
+### Install
 
 ```sh
 make install
