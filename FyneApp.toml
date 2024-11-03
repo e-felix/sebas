@@ -1,0 +1,14 @@
+website = "https://sebas.nakaoni.fr"
+
+[Details]
+Name = "Sebas"
+ID = "fr.nakaoni.sebas"
+Version = "0.1.0"
+Build = 1
+
+[LinuxAndBSD]
+GenericName = "Sebas"
+Categories = ["Tool"]
+Comment = "Your personal butler"
+Keywords = ["tool", "tech"]
+ExecParams = ""
