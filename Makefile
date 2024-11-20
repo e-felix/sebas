@@ -19,5 +19,5 @@ app_cmd:
 app_build: install
 	core build
 
-app_run: install
+app_run: app_cmd install
 	core run
