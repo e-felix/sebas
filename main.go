@@ -7,21 +7,27 @@ import (
 )
 
 var APP_TITLE = "Sebas - Your Tech Butler"
-var body *core.Body
+var mainContainer *core.Frame
 
 func main() {
-	body = core.NewBody(APP_TITLE)
+	body := core.NewBody(APP_TITLE)
+	mainContainer = core.NewFrame(body)
+	mainContainer.Styler((func(s *styles.Style) {
+		s.Display = styles.Stacked
+		s.Grow = math32.Vector2{X: 1, Y: 1}
+	}))
 
-	createMenu()
+	createTopPanel()
 
 	body.RunMainWindow()
 }
 
-func createMenu() {
-	menu := core.NewFrame(body)
+func createTopPanel() {
+	menu := core.NewFrame(mainContainer)
 	menu.Styler(func(s *styles.Style) {
 		s.Display = styles.Flex
 		s.Justify.Content = styles.SpaceBetween
+		s.Align.Items = styles.Center
 		s.Grow = math32.Vector2{X: 1, Y: 0}
 	})
 
