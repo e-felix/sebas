@@ -66,3 +66,8 @@ make install
 ```sh
 make test
 ```
+
+### Dependencies
+
+GUI:
+- Cogent Core: https://github.com/cogentcore/core
